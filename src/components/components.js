@@ -7,7 +7,7 @@ let count = 0;
 export let GameView = createReactClass({
   render: function () {
     const gameBoardStyle = {
-                            width: this.props.game.cols*15, 
+                            width: this.props.game.cols*25, 
                             height: this.props.game.rows*25,
                             border: '2px solid cyan'
                           }
@@ -47,7 +47,7 @@ export let Square = createReactClass({
           position: 'absolute',
           width: '20px',
           height: '20px',
-          backgroundColor: 'pink'
+          backgroundColor: `rgb(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)})`
         };
         return <div className="square" style={squareStyle}></div>;
     }
