@@ -9,13 +9,20 @@ export let GameView = createReactClass({
     const gameBoardStyle = {
                             width: this.props.game.cols*25, 
                             height: this.props.game.rows*25,
-                            border: '2px solid cyan'
+                            outline: '5px solid black',
+                            position: 'relative',
+                            backgroundColor: 'white'
                           }
 
-    return <div onKeyUp={this.handleKeyUp} style={gameBoardStyle}>
-      <PieceView piece={this.props.game.fallingPiece} />
-      <RubbleView rubble={this.props.game.rubble} />
-    </div>;
+    return (
+      <div>
+        <h1>TETROSHLACK</h1>
+        <div onKeyUp={this.handleKeyUp} style={gameBoardStyle}>
+          <PieceView piece={this.props.game.fallingPiece} />
+          <RubbleView rubble={this.props.game.rubble} />
+        </div>
+      </div>
+    )
   },
   handleKeyUp: function (e) {
     console.log('key pressed');

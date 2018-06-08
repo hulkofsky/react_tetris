@@ -2,4 +2,15 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url(http://www.youloveit.com/uploads/posts/2017-08/1501837562_youloveit_com_my_little_pony_the_movie_wallpapers17.jpg);
+}
+
+h1 {
+  font-size: 60px;
+  font-weight: bold;
+  text-shadow: 0px 0px 30px rgba(255, 255, 255, 1);
 }

@@ -4,6 +4,7 @@ import * as Components from './components/components';
 import * as Model from './components/models';
 import { createStore } from 'redux';
 import * as Mousetrap from 'mousetrap';
+import './index.css';
 
 function reducer(state = new Model.Game(), action) {
     switch (action.type) {
