@@ -1,3 +1,4 @@
+import * as _ from 'underscore';
 
 export class Point {
     constructor(row,col) {
@@ -89,7 +90,14 @@ export class Point {
     }
     convertToRubble() {
       this.rubble = this.rubble.concat(this.fallingPiece.points());
-      this.startAPiece();
+      const completedRows = this.completedRows();
+      completedRows.forEach(r => this.collapseRow(r));
+      if (!this.isGameOver()) {
+        this.startAPiece();
+      }
+    }
+    isGameOver() {
+      return this.rubble.some(point => point.row === 1);
     }
     startAPiece() {
       this.fallingPiece = new Piece(shapes.selectRandom(), this.rows, this.cols);
@@ -119,6 +127,19 @@ export class Point {
       if (this.fallingPieceIsOutOfBounds() || this.fallingPieceOverlapsRubble()) {
         compensation();
       }
+    }
+    completedRows() {
+      return _.range(1,this.rows+1).filter(row =>
+        _.range(1,this.cols+1).every(col => this.rubbleHas(row,col))
+      );
+    }
+    collapseRow(row) {
+      this.rubble = this.rubble.filter(point => point.row !== row);
+      const higherPoints = this.rubble.filter(point => point.row < row);
+      higherPoints.forEach(point => point.row += 1);
+    }
+    rubbleHas(row,col) {
+      return this.rubble.some(point => point.row === row && point.col === col);
     }
   }
   

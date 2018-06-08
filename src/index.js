@@ -7,10 +7,13 @@ import * as Mousetrap from 'mousetrap';
 import './index.css';
 
 function reducer(state = new Model.Game(), action) {
+  if (state.isGameOver()) return state;
     switch (action.type) {
         case 'TICK':
           const revedState = state.tick();
-          setTimeout(() => store.dispatch({ type: 'TICK' }),500);
+          if (!revedState.isGameOver()) {
+            setTimeout(() => store.dispatch({ type: 'TICK' }),500);
+          }
           return revedState;
         case 'ROTATE':
           return state.rotate();
@@ -33,4 +36,4 @@ store.subscribe(() => {
     document.getElementById('root'));
   });
   
-  setTimeout(() => store.dispatch({ type: 'TICK' }),500);
+store.dispatch({ type: 'TICK' });
