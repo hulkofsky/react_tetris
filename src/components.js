@@ -1,6 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import createReactClass from 'create-react-class'
+import createReactClass from 'create-react-class';
 
 let count = 0;
 
@@ -18,19 +17,16 @@ export const GameView = createReactClass({
             <h1>
                 TETROSHLACK
             </h1>
-            <div onKeyUp={this.handleKeyUp} style={gameBoardStyle}>
+            <div  style={gameBoardStyle}>
                 { this.props.game.isGameOver() ?
-                    <span>GAME OVER</span> : <span>
+                    <span className="game-over">GG WP!(NO)</span> : <span>
                         <PieceView piece={this.props.game.fallingPiece} />
                         <RubbleView rubble={this.props.game.rubble} />
                     </span> }
             </div>;
         </div>
-    },
-    handleKeyUp: function (e) {
-        console.log('key pressed');
-        console.dir(e);
     }
+    
 });
 
 export const PieceView = createReactClass({

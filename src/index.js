@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM  from 'react-dom';
-import * as Components from './components/components';
-import * as Model from './components/models';
+import * as Components from './components';
+import * as Model from './model';
 import { createStore } from 'redux';
 import * as Mousetrap from 'mousetrap';
 import './index.css';

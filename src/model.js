@@ -78,7 +78,7 @@ export class Point {
     }
     tick() {
       this.transactionDo(()=>this.fallingPiece.fallOne(), ()=> this.fallingPiece.liftOne());
-      if (this.fallingPiece.maxRow() == this.rows) {
+      if (this.fallingPiece.maxRow() === this.rows) {
         this.convertToRubble();
         return this;
       }
@@ -198,7 +198,6 @@ export class Point {
   };
   shapes.selectRandom = function() {
     var index = Math.floor(Math.random()*1000000%7);
-    console.log('random index = ' + index);
     return shapes[Object.keys(shapes)[index]];
   }
   
